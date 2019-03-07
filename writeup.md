@@ -8,7 +8,7 @@ My pipeline consisted of 7 steps.
 
 1. Convert the image into grayscale.
 
-![image1]: ./test_images_output/gray_img.jpg "Grayscale"
+![image1](./test_images_output/gray_img.jpg "Grayscale")
 
 2. Apply Gaussian Blur to the grayscaled image with a kernel size of 5(must be odd) to smooth out edges.
 
@@ -25,7 +25,7 @@ My pipeline consisted of 7 steps.
 5.  Apply Hough transformation to the ROI image to find lane lines on a blank(black) image.  Shorter lines were discarded in order to remove any small outlier marks on the road.  The rest of the parameters were tweaked using trial and error.
 
 
-6.  Draw the hough lines using the draw_lines function.  In order to draw a single line on the left and right lanes, I modified the draw_lines() function by calculating the slope of each line.  If the slope was positive i placed it in right lane lists, if it was negative i put it in left lane lists because our images coordinate origin is the top left of the image(thus any lines on left travelling upwards will be negative).  During this I also filtered out lines with small slopes as without this I had jitters in testing on yellow lines video and the drawn lines would occassionally jump inside the lane.  Using those lists I used to fit a polynomial of degree 1 to the point lists for the left and right and found the minimum and maximum points(start and endpoints of road lines) based on the region of interest that fit the polynomial.  Using those points cv2.line was used to draw a line through the points.
+6.  Draw the hough lines using the draw_lines function.  In order to draw a single line on the left and right lanes, I modified the draw_lines() function by calculating the slope of each line.  If the slope was positive i placed it in right lane lists, if it was negative i put it in left lane lists because our images coordinate origin is the top left of the image(thus any lines on left travelling upwards will be negative).  During this I also filtered out lines with small slopes as without this I had jitters in testing on yellow lines video and the drawn lines would occassionally jump inside the lane.  Using those lists I used to fit a polynomial of degree 1 to the point lists for the left and right and found the minimum and maximum points(start and endpoints of road lines) based on the region of interest that fit the polynomial.  Using those points cv2.line was used to draw a line through the points.  I took the idea to use np.polyfit to extrapolate the lines from the stackoverflow post: https://stackoverflow.com/questions/19406049/extrapolating-data-with-numpy-python
 
 [image5]: ./test_images_output/hough_img.jpg "hough"
 
