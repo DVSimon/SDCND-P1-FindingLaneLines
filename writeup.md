@@ -8,7 +8,7 @@ My pipeline consisted of 7 steps.
 
 1. Convert the image into grayscale.
 
-[image1]: ./test_images_output/gray_img.jpg "Grayscale"
+![image1]: ./test_images_output/gray_img.jpg "Grayscale"
 
 2. Apply Gaussian Blur to the grayscaled image with a kernel size of 5(must be odd) to smooth out edges.
 
